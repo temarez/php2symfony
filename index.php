@@ -1,17 +1,6 @@
 <?php
-// index.php
+require_once 'model.php';
 
-$link = mysql_connect('localhost', 'root', '73Gb0OrC');
-mysql_select_db('blog_db', $link);
+$posts = get_all_posts();
 
-$result = mysql_query('SELECT id, title FROM post', $link);
-
-$posts = array();
-while ($row = mysql_fetch_assoc($result)) {
-    $posts[] = $row;
-}
-
-mysql_close($link);
-
-// include the HTML presentation code
 require 'templates/list.php';
